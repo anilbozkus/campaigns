@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="descr">Campaign Description:</label>
-        <input type="text" id="descr" formControlName="descr">
-        <div *ngIf="campaignForm.get('descr')?.invalid && campaignForm.get('descr')?.touched" class="error-message">
+        <label for="campaignDescr">Campaign Description:</label>
+        <input type="text" id="campaignDescr" formControlName="campaignDescr">
+        <div *ngIf="campaignForm.get('campaignDescr')?.invalid && campaignForm.get('campaignDescr')?.touched" class="error-message">
             Campaign Description is required.
         </div>
       </div>

@@ -1,0 +1,14 @@
+<div class="campaign-item">
+    <h3>{{ campaign.campaignTitle }}</h3>
+    <p>{{ campaign.campaignDescr }}</p>
+    <div class="rating">
+      <span class="score">{{ campaign.campaignScore }}</span>
+      <button (click)="increaseScore()">+</button>
+      <button (click)="decreaseScore()">-</button>
+    </div>
+    <p class="date">{{ campaign.campaignDate }}</p>
+    <div class="actions">
+      <button class="update-button" (click)="updateCampaign()">Update</button>
+      <button class="delete-button" (click)="deleteCampaign()">Delete</button>
+    </div>
+  </div>

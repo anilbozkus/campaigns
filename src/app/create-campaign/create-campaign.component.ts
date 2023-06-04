@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CampaignService } from './campaign.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-campaign',
@@ -9,8 +10,9 @@ import { CampaignService } from './campaign.service';
 })
 
 export class CampaignComponent implements OnInit {
+  id!: string;
   campaignTitle!: string;
-  descr!: string;
+  campaignDescr!: string;
   campaignScore: number = 0;
   campaignDate!: string;
   showSuccessMessage!: boolean;
@@ -29,8 +31,9 @@ export class CampaignComponent implements OnInit {
 
   initializeForm() {
     this.campaignForm = this.formBuilder.group({
+      id: [uuidv4()],
       campaignTitle: ['', Validators.required],
-      descr: ['', Validators.required],
+      campaignDescr: ['', Validators.required],
       campaignScore: [0],
       campaignDate: [this.getCurrentDate()]
     });
