@@ -1,0 +1,33 @@
+<div class="campaign-container">
+    <h2 class="title">Create Campaign</h2>
+    <form [formGroup]="campaignForm" (ngSubmit)="saveCampaign()" class="campaign-form">
+      <div class="form-group">
+        <label for="campaignTitle">Campaign Title:</label>
+        <input type="text" id="campaignTitle" formControlName="campaignTitle">
+        <div *ngIf="campaignForm.get('campaignTitle')?.invalid && campaignForm.get('campaignTitle')?.touched" class="error-message">
+          Campaign Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descr">Campaign Description:</label>
+        <input type="text" id="descr" formControlName="descr">
+        <div *ngIf="campaignForm.get('descr')?.invalid && campaignForm.get('descr')?.touched" class="error-message">
+            Campaign Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="campaignScore">Campaign Score:</label>
+        <input type="number" id="campaignScore" formControlName="campaignScore" [value]="0">
+      </div>
+      <div class="form-group">
+        <label for="campaignDate">Campaign Date:</label>
+        <input type="date" id="campaignDate" formControlName="campaignDate" [value]="getCurrentDate()">
+      </div>
+      <button type="submit" class="btn-save">Save</button>
+    </form>
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Campaign successfully saved.
+    </div>
+</div>
+
+  

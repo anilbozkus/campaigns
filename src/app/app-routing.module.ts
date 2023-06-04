@@ -3,22 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { CampaignComponent } from './create-campaign/create-campaign.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  // ...
+  { path: 'create-campaign', component: CampaignComponent },
   { 
     path: '',
     component: HeaderComponent,
     canActivate: [AuthGuard],
     children: [
       { path: 'home', component: HomeComponent },
-      // Add other routes that require the header component here
     ]
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
