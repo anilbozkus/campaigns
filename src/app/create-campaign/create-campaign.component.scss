@@ -1,7 +1,16 @@
+::ng-deep .custom-success-bar {
+  background-color: green;
+  color: white;
+
+  .mat-button-wrapper{
+    display: none;
+  }
+}
+
 :host {
     display: block;
     width: 100%;
-  }
+}
 
 .campaign-container {
     display: flex;
