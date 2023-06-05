@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignService } from 'src/app/create-campaign/campaign.service';
+import { UpdateCampaignComponent } from '../update-campaign/update-campaign.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Campaign {
   id: string;
@@ -19,9 +22,37 @@ export class CampaignItemComponent implements OnInit {
   @Input() campaign!: Campaign;
   @Output() campaignDeleted = new EventEmitter<string>();
 
-  constructor(private campaignService: CampaignService) {}
+  constructor(
+    private campaignService: CampaignService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ){}
 
   ngOnInit() {
+  }
+
+  openUpdateCampaignModal(campaign: Campaign): void {
+    const dialogRef = this.dialog.open(UpdateCampaignComponent, {
+      width: '400px',
+      data: campaign
+    });
+
+    dialogRef.afterClosed().subscribe(updatedCampaign => {
+      if (updatedCampaign) {
+        this.updateSelectedCampaign(updatedCampaign);
+      }
+    });
+  }
+
+  private updateSelectedCampaign(updatedCampaign: Campaign): void {
+    this.campaignService.updateCampaign(updatedCampaign);
+    this.campaign = updatedCampaign;
+
+    this.snackBar.open('Campaign successfully updated', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      panelClass: ['custom-success-bar']
+    });
   }
 
   increaseScore() {

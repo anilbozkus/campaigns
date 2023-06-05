@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   campaigns!: Campaign[];
   screenWidth!: number;
 
-  largeScreenSize = 1240;
+  largeScreenSize = 760;
   mediumScreenSize = 435;
 
   @HostListener('window:resize', ['$event'])

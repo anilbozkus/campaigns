@@ -10,6 +10,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CampaignComponent } from './create-campaign/create-campaign.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CampaignItemComponent } from './components/campaign-item/campaign-item.component';
+import { UpdateCampaignComponent } from './components/update-campaign/update-campaign.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -19,13 +23,17 @@ import { CampaignItemComponent } from './components/campaign-item/campaign-item.
     HeaderComponent,
     SidebarComponent,
     CampaignComponent,
-    CampaignItemComponent
+    CampaignItemComponent,
+    UpdateCampaignComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

@@ -1,6 +1,6 @@
 <div class="home-container">
     <div class="campaign-list" [ngClass]="{
-        'three-columns': isScreenSizeLarge(),
+        'two-columns': isScreenSizeLarge(),
         'one-column': isScreenSizeSmall()
       }">
       <ng-container *ngIf="campaigns.length > 0; else noCampaigns">

@@ -1,9 +1,10 @@
 .sidebar {
   width: 200px;
   height: 100%;
-  background-color: #ecf1ff3d;
+  background-color: rgb(96 175 92 / 15%);
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
   position: fixed;
+  z-index: 999;
 }
 
 .nav {
@@ -43,6 +44,10 @@ a:hover {
 }
 @media (max-width: 767px) {
   .sidebar {
-    display: none;
+    background-color: rgb(232 247 231);
+    bottom: 0;
+    width: 100%;
+    height: max-content;
+    border-top: 0.3px solid #d4d4d4;
   }
 }

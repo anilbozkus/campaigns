@@ -11,14 +11,19 @@
 
     .campaign-list{
         margin-top: 40px;
+        
+        @media (max-width: 767px) {
+          margin-bottom: 160px;
+        }
     }
 
-    .three-columns {
+    .two-columns {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         width: 100%;
         max-width: 1024px;
+        padding: 0 20px;
       }
     
       .one-column {
@@ -27,5 +32,8 @@
         gap: 20px;
         width: 100%;
         max-width: 450px;
+      }
+      @media (min-width: 767px) {
+        margin-left: 200px;
       }
 }

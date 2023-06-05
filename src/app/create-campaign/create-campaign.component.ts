@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CampaignService } from './campaign.service';
 import { v4 as uuidv4 } from 'uuid';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-campaign',
@@ -15,11 +16,14 @@ export class CampaignComponent implements OnInit {
   campaignDescr!: string;
   campaignScore: number = 0;
   campaignDate!: string;
-  showSuccessMessage!: boolean;
   campaignForm!: FormGroup;
   timer!: any
 
-  constructor(private formBuilder: FormBuilder, private campaignService: CampaignService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private campaignService: CampaignService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -53,11 +57,11 @@ export class CampaignComponent implements OnInit {
 
       this.campaignService.saveCampaign(campaignData);
 
-      this.showSuccessMessage = true;
-
-      this.timer = setTimeout(() => {
-        this.showSuccessMessage = false;
-      }, 2000);
+      this.snackBar.open('Campaign successfully created', 'Close', {
+        duration: 2000,
+        verticalPosition: 'top',
+        panelClass: ['custom-success-bar']
+      });
     } else {
       this.markFormGroupAsTouched(this.campaignForm);
     }
